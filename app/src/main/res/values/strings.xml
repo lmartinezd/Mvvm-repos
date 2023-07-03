@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Mvvm-Repos</string>
+
+<!--    MAIN ACTIVITY-->
+    <string name="layout_empty">Não existe usuários. \nTente novamente.</string>
+    <string name="activity_main_title">Users</string>
+
 </resources>

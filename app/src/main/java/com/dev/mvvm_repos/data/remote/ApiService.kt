@@ -4,6 +4,7 @@ import com.dev.mvvm_repos.data.model.UserResponse
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("character")
-    suspend fun getListUsers(): UserResponse
+
+    @GET("users")
+    suspend fun getListUsers(): List<UserResponse>
 }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class UserRepositoryImpl(private val api: ApiService) : UserRepository {
-    override suspend fun getListUsers(): UserResponse {
+    override suspend fun getListUsers(): List<UserResponse> {
         return withContext(Dispatchers.IO) {
             return@withContext api.getListUsers()
         }
