@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         adapter = UserAdapter()
 
         setupRecyclerView()
+
+        binding.btSearch.setOnClickListener {
+            val filterValue = binding.tvFilter.text.toString()
+            viewModel.searchByUser(filterValue)
+        }
     }
 
     private fun setupRecyclerView() {
