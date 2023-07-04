@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="view_separator_empty">16dp</dimen>
+    <dimen name="detail_radius_photo">10dp</dimen>
+    <dimen name="min_height_photo">50dp</dimen>
+</resources>

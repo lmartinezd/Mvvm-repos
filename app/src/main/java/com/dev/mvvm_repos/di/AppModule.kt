@@ -4,6 +4,7 @@ import com.dev.mvvm_repos.data.remote.ApiService
 import com.dev.mvvm_repos.repository.UserRepository
 import com.dev.mvvm_repos.repository.UserRepositoryImpl
 import com.dev.mvvm_repos.ui.user.UserViewModel
+import com.dev.mvvm_repos.ui.detail.UserDetailViewModel
 import com.google.gson.GsonBuilder
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.singleOf
@@ -19,6 +20,7 @@ val appModule = module {
     single { getApiService() }
     singleOf(::UserRepositoryImpl) { bind<UserRepository>() }
     viewModelOf(::UserViewModel)
+    viewModelOf(::UserDetailViewModel)
 }
 
 fun getApiService(): ApiService {

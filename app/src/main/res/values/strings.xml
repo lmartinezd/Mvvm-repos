@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">Mvvm-Repos</string>
 
-<!--    MAIN ACTIVITY-->
+    <!--    MAIN ACTIVITY-->
     <string name="layout_empty">Não existe usuários. \nTente novamente.</string>
     <string name="activity_main_title">Users</string>
 
+    <!--    DETAIL USER ACTIVITY-->
+    <string name="layout_error">Usuário indisponível. \nTente novamente.</string>
+    <string name="string_name">Name : %s</string>
+    <string name="string_company">Company : %s</string>
+    <string name="string_blog">Blog : %s</string>
+    <string name="string_location">Location : %s</string>
+    <string name="string_repos">Número de repositorios : %s</string>
 </resources>

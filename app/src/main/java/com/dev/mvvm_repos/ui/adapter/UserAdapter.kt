@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dev.mvvm_repos.R
 import com.dev.mvvm_repos.data.model.User
+import com.dev.mvvm_repos.ui.detail.UserDetailActivity
+import com.dev.mvvm_repos.utils.loadImage
+import com.dev.mvvm_repos.utils.loadImageWithCornerRadius
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserHolder>() {
 
@@ -38,17 +40,19 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserHolder>() {
         private val tvName: TextView = itemView.findViewById(R.id.tvUserName)
         private val ivImage: AppCompatImageView = itemView.findViewById(R.id.ivImage)
 
-        private val options = RequestOptions().apply {
-            fitCenter()
-        }
-
         fun bind(item: User) {
-            Glide.with(itemView.rootView.context)
-                .load(item.avatarUrl)
-                .apply(options)
-                .into(ivImage)
-
             tvName.text = item.login
+            ivImage.loadImageWithCornerRadius(
+                item.avatarUrl,
+                R.dimen.detail_radius_photo,
+                R.drawable.baseline_on_error_24
+            )
+
+            itemView.setOnClickListener { view: View ->
+                view.context.startActivity(
+                    UserDetailActivity.startIntent(view.context, item.login)
+                )
+            }
         }
     }
 }
