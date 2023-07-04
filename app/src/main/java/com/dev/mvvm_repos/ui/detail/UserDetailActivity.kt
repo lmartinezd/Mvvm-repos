@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.mvvm_repos.R
 import com.dev.mvvm_repos.databinding.ActivityUserDetailBinding
+import com.dev.mvvm_repos.ui.adapter.RepoAdapter
 import com.dev.mvvm_repos.utils.loadImageWithCornerRadius
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -15,6 +18,7 @@ class UserDetailActivity : AppCompatActivity() {
 
     private val viewModel: UserDetailViewModel by viewModel()
     private lateinit var binding: ActivityUserDetailBinding
+    private lateinit var adapter: RepoAdapter
 
     private var username: String? = null
 
@@ -31,7 +35,6 @@ class UserDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityUserDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -40,10 +43,26 @@ class UserDetailActivity : AppCompatActivity() {
         viewModelObservers()
 
         viewModel.getUserDetails(username ?: "")
+        viewModel.getUserRepositories(username ?: "")
+
+        adapter = RepoAdapter()
 
         binding.toolbarDetail.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvRepository.layoutManager = LinearLayoutManager(this)
+        binding.rvRepository.adapter = adapter
+        binding.rvRepository.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                LinearLayoutManager.VERTICAL
+            )
+        )
     }
 
     private fun viewModelObservers() {
@@ -62,12 +81,17 @@ class UserDetailActivity : AppCompatActivity() {
                     binding.tvBlog.text = getString(R.string.string_blog, it.detail.blog)
                     binding.tvLocation.text =
                         getString(R.string.string_location, it.detail.location)
-                    binding.tvRepos.text = getString(it.detail.publicRepos)
+                    binding.tvRepos.text = getString(R.string.string_repos, it.detail.publicRepos.toString())
                 }
                 is DetailViewState.Failed -> {
                     binding.layoutMessageError.visibility = View.VISIBLE
                 }
             }
         })
+
+        viewModel.listOfRepository.observe(this, Observer {
+            adapter.listRepository = it
+        })
+
     }
 }

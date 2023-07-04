@@ -143,20 +143,47 @@
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_8"
         app:layout_constraintEnd_toEndOf="@+id/tvBlog"
         app:layout_constraintStart_toStartOf="@+id/tvBlog"
         app:layout_constraintTop_toBottomOf="@+id/tvBlog"
         tools:text="@string/string_location" />
 
+    <View
+        android:id="@+id/viewBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@color/grey_50"
+        app:layout_constraintBottom_toTopOf="@+id/rvRepository"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+
     <TextView
         android:id="@+id/tvRepos"
-        style="@style/TextAppearance.AppCompat.Subhead"
+        style="@style/TextAppearance.AppCompat.Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_24"
         app:layout_constraintEnd_toEndOf="@+id/tvLocation"
         app:layout_constraintStart_toStartOf="@+id/tvLocation"
         app:layout_constraintTop_toBottomOf="@+id/tvLocation"
         tools:text="@string/string_repos" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRepository"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_16"
+        android:background="@color/grey_50"
+        android:clipChildren="false"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepos"
+        tools:itemCount="4"
+        tools:listitem="@layout/user_card_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,6 @@
 package com.dev.mvvm_repos.ui.user
 
-import com.dev.mvvm_repos.data.model.User
-import com.dev.mvvm_repos.data.model.UserDetail
-import com.dev.mvvm_repos.data.model.UserDetailResponse
-import com.dev.mvvm_repos.data.model.UserResponse
+import com.dev.mvvm_repos.data.model.*
 
 fun List<UserResponse>.toListUsers() =
     map {
@@ -27,3 +24,11 @@ fun UserDetailResponse.toUserDetail(): UserDetail {
         publicRepos = publicRepos
     )
 }
+
+fun List<UserRepositoryResponse>.toListUserRepositories() =
+    map {
+        UserRepo(
+            name = it.name ?: "",
+            id = it.id
+        )
+    }.toMutableList()

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.mvvm_repos.databinding.ActivityMainBinding
 import com.dev.mvvm_repos.ui.adapter.UserAdapter
+import com.dev.mvvm_repos.utils.hideKeyboard
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         adapter = UserAdapter()
 
         setupRecyclerView()
-
         binding.btSearch.setOnClickListener {
             val filterValue = binding.tvFilter.text.toString()
             viewModel.searchByUser(filterValue)
+            this.hideKeyboard()
         }
     }
 
