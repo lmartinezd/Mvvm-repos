@@ -4,7 +4,7 @@
     <!--    MAIN ACTIVITY-->
     <string name="layout_empty">Não existe usuários. \nTente novamente.</string>
     <string name="activity_main_title">Users</string>
-    <string name="activity_main_search">Filtrar por usuário</string>
+    <string name="activity_main_hint_search">Filtrar por usuário</string>
 
     <!--    DETAIL USER ACTIVITY-->
     <string name="layout_error">Usuário indisponível. \nTente novamente.</string>

@@ -60,6 +60,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="@dimen/margin_16"
         app:contentInsetEnd="0dp"
         app:contentInsetEndWithActions="0dp"
         app:contentInsetLeft="0dp"
@@ -68,7 +69,8 @@
         app:contentInsetStartWithNavigation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -86,7 +88,7 @@
             android:layout_marginStart="@dimen/margin_16"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:hint="@string/activity_main_search"
+            android:hint="@string/activity_main_hint_search"
             android:maxLength="50"
             android:maxLines="1"
             android:overScrollMode="always"
@@ -96,33 +98,35 @@
             android:id="@+id/holderLeft"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginRight="10dp"
             android:layout_weight="3"
             android:background="@android:color/transparent" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btSearch"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin_16"
             android:layout_weight="2"
-            android:background="@android:color/transparent"
             android:clickable="true"
-            android:src="@drawable/baseline_search_24" />
+            android:contentDescription="@string/activity_main_hint_search"
+            app:icon="@drawable/baseline_search_24"
+            app:iconGravity="textStart"
+            app:iconTint="@color/black" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCharacter"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_16"
         android:layout_marginTop="@dimen/margin_16"
-        android:layout_marginEnd="@dimen/margin_8"
+        android:layout_marginRight="@dimen/margin_16"
         android:clipChildren="false"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:itemCount="4"
         tools:listitem="@layout/user_card_view" />
